@@ -1,0 +1,114 @@
+---
+// src/components/Navbar.astro
+import logo from '../assets/logo.webp';
+
+const navLinks = [
+  { name: "Company", href: "/company" },
+  { name: "Services", href: "#services", hasDropdown: true },
+  { name: "Success Story", href: "/success-story" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact Us", href: "/contact" },
+];
+---
+
+<header 
+  id="navbar" 
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out border-b border-transparent"
+>
+  <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+    
+    <a href="/" class="block">
+      <img 
+        src={logo.src} 
+        alt="JLO Global Resources" 
+        class="h-12 w-auto object-contain" 
+      />
+    </a>
+
+    <ul class="hidden md:flex space-x-8 items-center">
+      {navLinks.map((link) => (
+        <li class="relative group">
+          <a 
+            href={link.href} 
+            class="text-gray-300 hover:text-white transition-colors py-2 font-medium"
+          >
+            {link.name}
+            {link.hasDropdown && (
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            )}
+          </a>
+
+          {link.hasDropdown && (
+            // 👇 CHANGED: Dropdown to Black Glass (bg-black/90 + blur)
+            <div class="absolute left-0 mt-2 w-48 bg-black/90 backdrop-blur-md border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+              <a href="#" class="block px-4 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white">Web Development</a>
+              <a href="#" class="block px-4 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white">SEO Optimization</a>
+              <a href="#" class="block px-4 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white">Marketing Tools</a>
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
+
+    <div class="hidden md:block">
+      <a href="#" class="px-5 py-2 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition-all shadow-lg hover:scale-105">
+        Get Quote
+      </a>
+    </div>
+
+    <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+
+  </nav>
+
+  <div id="mobile-menu" class="hidden md:hidden bg-black/95 backdrop-blur-md border-t border-white/10 absolute w-full left-0 top-full">
+    <div class="flex flex-col p-4 space-y-4">
+      <a href="/company" class="text-gray-300 hover:text-white">Company</a>
+      <a href="#" class="text-gray-300 hover:text-white">Services</a>
+      <a href="/success-story" class="text-gray-300 hover:text-white">Success Story</a>
+      <a href="/blog" class="text-gray-300 hover:text-white">Blog</a>
+      <a href="/contact" class="text-gray-300 hover:text-white">Contact Us</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // CLIENT-SIDE SCRIPT
+  const navbar = document.getElementById('navbar');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  // 👇 CHANGED: 'bg-black/80' creates that transparent glass look
+  const solidClasses = ['bg-black/80', 'backdrop-blur-md', 'border-white/10'];
+
+  function handleScroll() {
+    if (!navbar) return;
+
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop < 10) {
+      navbar.classList.remove(...solidClasses);
+    } else {
+      navbar.classList.add(...solidClasses);
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        
+        if (!mobileMenu.classList.contains('hidden')) {
+            navbar?.classList.add(...solidClasses);
+        } else {
+            handleScroll();
+        }
+    });
+  }
+</script>

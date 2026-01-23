@@ -1,0 +1,22 @@
+---
+// src/components/TrustedBy.astro
+import clientLogos from '../assets/clients.webp';
+---
+
+<section class="py-8 bg-transparent">
+  <div class="container mx-auto px-4 text-center">
+    
+    <p class="text-slate-600 text-sm font-bold tracking-[0.2em] uppercase mb-6">
+      Trusted by Industry Leaders
+    </p>
+
+    <div class="flex justify-center">
+      <img 
+        src={clientLogos.src} 
+        alt="Companies that trust JLO Global Resources" 
+        class="w-full max-w-5xl h-auto object-contain"
+      />
+    </div>
+
+  </div>
+</section>

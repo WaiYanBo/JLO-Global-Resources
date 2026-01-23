@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// You can customize the page title here
+const pageTitle = "Company | JLO Global Resources";
+---
+
+<Layout title={pageTitle}>
+  
+  <section class="bg-[#026456] text-white py-20 md:py-28 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[url('/pattern.png')] bg-cover bg-center"></div>
+    
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
+        Who We Are
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+        Blending creativity, strategy, and technology to help businesses build strong brands.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        
+        <div class="space-y-6">
+          <h2 class="text-red-500 font-bold uppercase tracking-wider text-sm">About Us</h2>
+          <h3 class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
+            Your Trusted Partner for Sustainable Growth.
+          </h3>
+          
+          <div class="text-slate-600 leading-relaxed space-y-4">
+            <p>
+              Founded in 2019, <strong>JLO Global Resources</strong> is a full-suite marketing agency based in Petaling Jaya, Selangor. We help businesses build strong brands, attract more customers, and grow with confidence through tailored marketing strategies that blend creativity, strategy, and technology.
+            </p>
+            <p>
+              Our team brings together specialists in brand development, digital marketing, social media, signage design, and customer engagement, all working with one goal in mind: to make every client stand out in their industry.
+            </p>
+            <p>
+              Whether it’s a new startup shaping its first brand identity, a growing SME looking to expand its reach, or a corporate client refining its market presence, we deliver strategies that work in the real world. Driven by values like integrity, innovation, and collaboration, we’ve earned the trust of clients across Malaysia and beyond.
+            </p>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="aspect-[4/3] bg-gray-200 rounded-lg overflow-hidden shadow-xl">
+            <img 
+              src="/about-us-main.webp" 
+              alt="JLO Global Resources Team" 
+              class="w-full h-full object-cover hover:scale-105 transition duration-500"
+            />
+          </div>
+          <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-red-500 rounded-lg -z-10 hidden md:block"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border-t-4 border-red-500 hover:shadow-md transition">
+          <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-6 text-red-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-slate-900 mb-4">Our Vision</h3>
+          <p class="text-slate-600 leading-relaxed italic">
+            "We hope to be the trusted partner of choice for ambitious businesses across Malaysia and beyond, shaping vibrant brands, driving impactful engagement and elevating growth through innovative marketing for businesses that makes a lasting difference to have a stable economic landscape."
+          </p>
+        </div>
+
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border-t-4 border-[#026456] hover:shadow-md transition">
+          <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-[#040072]">
+             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-slate-900 mb-4">Our Mission</h3>
+          <p class="text-slate-600 leading-relaxed">
+            Our mission is to empower businesses to stand out and succeed. We deliver tailored, full-suite marketing solutions that cover the full spectrum from brand strategy and digital presence to content creation and signage, helping our clients grow confidently, attract more customers, and make a lasting impression in their industries.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="py-0">
+     <div class="w-full h-64 md:h-96 bg-gray-300">
+        <img src="/office-banner.webp" alt="JLO Working Culture" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700" />
+    </div>
+  </section>
+
+  <section class="bg-[#0B6E47] text-white py-20 text-center">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to elevate your brand?</h2>
+        <p class="text-blue-200 mb-8 max-w-2xl mx-auto">
+            Let's work together to build a marketing strategy that makes a lasting difference.
+        </p>
+        <a href="/contact" class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-lg hover:-translate-y-1">
+            Contact Us Today
+        </a>
+    </div>
+  </section>
+
+</Layout>
