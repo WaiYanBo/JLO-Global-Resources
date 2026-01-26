@@ -12,6 +12,37 @@ const {
   image = "/favicon.svg", 
   url = Astro.url 
 } = Astro.props;
+
+// 👇 NEW: Define the Schema.org JSON-LD data
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Corporation",
+  "name": "JLO Global Resources",
+  "url": import.meta.env.SITE, // Uses the 'site' from astro.config.mjs
+  "logo": new URL("/logo.webp", import.meta.env.SITE).toString(),
+  "description": "Your partner for 360° marketing, signboards, and digital solutions like 'Email Rakyat'. We also offer premium F&B catering, including our famous Daging Minang Rendang and Vanilla Butter Cake.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+60-12-345-6789", // 🔴 TODO: Replace with real phone number
+    "contactType": "customer service",
+    "areaServed": "MY",
+    "availableLanguage": ["en", "ms"]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kuala Lumpur",
+    "addressCountry": "MY"
+  },
+  // 🔴 TODO: Add your real social media links here
+  "sameAs": [
+    "https://www.facebook.com/people/JLO-Global-Resources/61583049912033/",
+    "https://www.tiktok.com/@jloglobalresources",
+    "https://www.lemon8-app.com/@jloglobalresources?region=my",
+    "https://www.instagram.com/jloglobalresources/",
+    "https://www.threads.com/@jloglobalresources?xmt=AQF0nDDx3BJASAS-BpJN2JzR1GCCxTgJVX4CeJGFM1itDvg",
+    "https://x.com/GlobalJlo42612?s=20"
+  ]
+};
 ---
 
 <meta charset="utf-8" />
@@ -36,3 +67,5 @@ const {
 <meta property="twitter:image" content={image} />
 
 <link rel="canonical" href={url} />
+
+<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />

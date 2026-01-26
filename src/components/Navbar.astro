@@ -1,13 +1,15 @@
 ---
 // src/components/Navbar.astro
+import { Image } from 'astro:assets'; // 👇 NEW import
 import logo from '../assets/logo.webp';
 
-// 👇 UPDATED: Products links now point to the new page sections
+// ... (keep your existing navLinks array and isActive logic) ...
 const navLinks = [
+  // ... same as before
   { name: "Company", href: "/company" },
   { 
     name: "Products", 
-    href: "/products", // Main link goes to top of products page
+    href: "/products", 
     hasDropdown: true,
     subItems: [
         { name: "Daging Minang Rendang", href: "/products#rendang" },
@@ -15,9 +17,10 @@ const navLinks = [
         { name: "Lagenda Acar Buah", href: "/products#acar" }
     ]
   },
+  // ... rest of links
   { 
     name: "Services", 
-    href: "/#services", // Anchored to home page
+    href: "/#services", 
     hasDropdown: true,
     subItems: [
         { name: "Web Development", href: "/#services" },
@@ -28,6 +31,18 @@ const navLinks = [
   { name: "Success Story", href: "/success-story" },
   { name: "Contact Us", href: "/contact" },
 ];
+
+const currentPath = Astro.url.pathname;
+
+const isActive = (path: string) => {
+  if (path === '/') return currentPath === '/';
+  const cleanPath = currentPath.replace(/\/$/, '');
+  const cleanHref = path.split('#')[0].replace(/\/$/, '');
+  return cleanPath === cleanHref || (cleanHref !== '' && cleanPath.startsWith(cleanHref));
+};
+
+const activeClass = "text-white border-b-2 border-[#00664e]";
+const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transparent hover:border-[#00664e]/50";
 ---
 
 <header 
@@ -37,35 +52,50 @@ const navLinks = [
   <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
     
     <a href="/" class="block">
-      <img 
-        src={logo.src} 
+      <Image 
+        src={logo} 
         alt="JLO Global Resources" 
-        class="h-12 w-auto object-contain" 
+        class="h-12 w-auto object-contain"
+        loading="eager" 
       />
     </a>
 
-    <ul class="hidden md:flex space-x-8 items-center">
+    <ul class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+
+
       {navLinks.map((link) => (
-        <li class="relative group">
+        <li class="relative group h-full flex items-center">
           <a 
             href={link.href} 
-            class="text-gray-200 hover:text-white transition-colors py-2 font-medium flex items-center"
+            class={`transition-all duration-300 py-1 font-medium flex items-center gap-1 ${isActive(link.href) ? activeClass : inactiveClass}`}
           >
             {link.name}
-            {link.hasDropdown && (
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            )}
           </a>
 
+          {/* 👇 IMPROVEMENT: Dropdown Toggle Button
+            Separated the arrow into a button. This allows "Click to toggle" on touch devices 
+            without breaking the main link navigation.
+          */}
           {link.hasDropdown && (
-            <div class="absolute left-0 mt-2 w-64 bg-[#00221a]/95 backdrop-blur-md border border-[#00664e]/30 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
-              {link.subItems?.map((subItem) => (
-                  <a href={subItem.href} class="block px-4 py-3 text-sm text-gray-300 hover:bg-[#00664e]/40 hover:text-white transition-colors">
-                    {subItem.name}
-                  </a>
-              ))}
+            <button 
+                class="dropdown-toggle p-1 text-gray-300 hover:text-white focus:outline-none"
+                aria-label={`Toggle ${link.name} dropdown`}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180 group-[.active]:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          )}
+
+          {link.hasDropdown && (
+            <div class="absolute left-0 top-full pt-4 w-64 opacity-0 invisible -translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-[.active]:opacity-100 group-[.active]:visible group-[.active]:translate-y-0 transition-all duration-300 z-50">
+                <div class="bg-[#00221a]/95 backdrop-blur-md border border-[#00664e]/30 rounded-lg shadow-brand overflow-hidden">
+                    {link.subItems?.map((subItem) => (
+                        <a href={subItem.href} class="block px-4 py-3 text-sm text-gray-300 hover:bg-[#00664e]/40 hover:text-white transition-colors">
+                            {subItem.name}
+                        </a>
+                    ))}
+                </div>
             </div>
           )}
         </li>
@@ -77,25 +107,27 @@ const navLinks = [
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
       </svg>
     </button>
-
   </nav>
 
-  <div id="mobile-menu" class="hidden md:hidden bg-[#00221a]/98 backdrop-blur-md border-t border-[#00664e]/30 absolute w-full left-0 top-full h-screen overflow-y-auto pb-20">
-    <div class="flex flex-col p-4 space-y-4">
-      <a href="/company" class="text-gray-300 hover:text-white text-lg">Company</a>
+  <div 
+    id="mobile-menu" 
+    class="md:hidden fixed inset-x-0 top-[72px] h-[calc(100vh-72px)] bg-[#00221a]/98 backdrop-blur-md border-t border-[#00664e]/30 overflow-y-auto transition-all duration-300 ease-in-out opacity-0 invisible -translate-y-4"
+  >
+    <div class="flex flex-col p-6 space-y-6">
+      <a href="/company" class={`text-lg ${isActive('/company') ? 'text-white font-bold pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Company</a>
       
-      <div class="space-y-2">
-        <span class="text-white font-bold text-lg">Products</span>
-        <div class="pl-4 border-l-2 border-[#00664e] flex flex-col space-y-2 mt-2">
-            <a href="/products#rendang" class="text-gray-400 hover:text-white">Daging Minang Rendang</a>
-            <a href="/products#cake" class="text-gray-400 hover:text-white">Vanilla Butter Cake</a>
-            <a href="/products#acar" class="text-gray-400 hover:text-white">Lagenda Acar Buah</a>
+      <div class="space-y-3">
+        <span class={`text-lg font-bold ${isActive('/products') ? 'text-white' : 'text-gray-300'}`}>Products</span>
+        <div class="pl-4 border-l-2 border-[#00664e]/50 flex flex-col space-y-3 mt-2">
+            <a href="/products#rendang" class="text-gray-400 hover:text-white py-1">Daging Minang Rendang</a>
+            <a href="/products#cake" class="text-gray-400 hover:text-white py-1">Vanilla Butter Cake</a>
+            <a href="/products#acar" class="text-gray-400 hover:text-white py-1">Lagenda Acar Buah</a>
         </div>
       </div>
 
       <a href="/#services" class="text-gray-300 hover:text-white text-lg">Services</a>
-      <a href="/success-story" class="text-gray-300 hover:text-white text-lg">Success Story</a>
-      <a href="/contact" class="text-gray-300 hover:text-white text-lg">Contact Us</a>
+      <a href="/success-story" class={`text-lg ${isActive('/success-story') ? 'text-white font-bold pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Success Story</a>
+      <a href="/contact" class={`text-lg ${isActive('/contact') ? 'text-white font-bold pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Contact Us</a>
     </div>
   </div>
 </header>
@@ -104,13 +136,19 @@ const navLinks = [
   const navbar = document.getElementById('navbar');
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
-  const solidClasses = ['bg-[#00221a]/90', 'backdrop-blur-md', 'border-[#00664e]/30', 'shadow-lg'];
+  const solidClasses = ['bg-[#00221a]/90', 'backdrop-blur-md', 'border-[#00664e]/30', 'shadow-brand'];
 
+  // 1. Scroll Effect
   function handleScroll() {
     if (!navbar) return;
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop < 10) {
+    
+    // Check if mobile menu is open to decide background
+    const isMobileMenuOpen = mobileMenu && !mobileMenu.classList.contains('invisible');
+
+    if (scrollTop < 10 && !isMobileMenuOpen) {
       navbar.classList.remove(...solidClasses);
     } else {
       navbar.classList.add(...solidClasses);
@@ -119,14 +157,56 @@ const navLinks = [
 
   window.addEventListener('scroll', handleScroll);
 
+  // 2. Mobile Menu Toggle (Animation)
   if (mobileMenuBtn && mobileMenu) {
     mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        if (!mobileMenu.classList.contains('hidden')) {
+        // Toggle animation classes
+        const isClosed = mobileMenu.classList.contains('invisible');
+        
+        if (isClosed) {
+            // OPEN
+            mobileMenu.classList.remove('invisible', 'opacity-0', '-translate-y-4');
+            mobileMenu.classList.add('visible', 'opacity-100', 'translate-y-0');
             navbar?.classList.add(...solidClasses);
         } else {
-            handleScroll();
+            // CLOSE
+            mobileMenu.classList.remove('visible', 'opacity-100', 'translate-y-0');
+            mobileMenu.classList.add('invisible', 'opacity-0', '-translate-y-4');
+            handleScroll(); // Revert navbar bg if at top
         }
     });
   }
+
+  // 3. Dropdown Click Toggle (for Touch/Tablet)
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+        // Stop the click from bubbling up (optional)
+        e.stopPropagation();
+        
+        // Find the parent LI
+        const parentLi = toggle.closest('li');
+        if (parentLi) {
+            // Toggle the 'active' class on the LI
+            // The CSS 'group-[.active]:opacity-100' handles the visibility
+            parentLi.classList.toggle('active');
+
+            // Close other open dropdowns
+            document.querySelectorAll('li.group.active').forEach(item => {
+                if (item !== parentLi) {
+                    item.classList.remove('active');
+                }
+            });
+        }
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!(e.target as Element).closest('li.group')) {
+        document.querySelectorAll('li.group.active').forEach(item => {
+            item.classList.remove('active');
+        });
+    }
+  });
+
 </script>

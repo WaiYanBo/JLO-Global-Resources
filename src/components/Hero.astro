@@ -1,5 +1,7 @@
 ---
 // src/components/Hero.astro
+import { Image } from 'astro:assets'; // 👇 NEW: Astro's optimized Image component
+
 import slide1 from '../assets/slphoto1.webp';
 import slide2 from '../assets/slphoto2.webp';
 import slide3 from '../assets/slphoto3.webp';
@@ -7,69 +9,48 @@ import slide4 from '../assets/slphoto4.webp';
 import slide5 from '../assets/slphoto5.webp';
 import slide6 from '../assets/slphoto6.webp';
 
-// We add slide1 again at the end to create the "Infinite Loop" illusion
-const slides = [slide1, slide2, slide3, slide4, slide5, slide6, slide1];
+// Note: Embla handles looping automatically, so we don't need to manually clone slides!
+const slides = [slide1, slide2, slide3, slide4, slide5, slide6];
 ---
 
 <section class="relative w-full h-screen overflow-hidden group">
-  
-  <div 
-    id="slider-track" 
-    class="flex w-full h-full"
-  >
-    {slides.map((slide, index) => (
-      <div class="w-full h-full flex-shrink-0 relative">
-        <img 
-          src={slide.src} 
-          alt={`Slide ${index + 1}`} 
-          class="w-full h-full object-cover"
-          loading={index === 0 ? "eager" : "lazy"} 
-        />
+  <div class="embla h-full w-full" id="hero-slider">
+    <div class="embla__container flex h-full w-full touch-pan-y">
+      {slides.map((slide, index) => (
+        <div class="embla__slide relative flex-[0_0_100%] min-w-0 h-full w-full">
+          <Image 
+            src={slide} 
+            alt={`Slide ${index + 1}`} 
+            class="w-full h-full object-cover"
+            width={1920}
+            height={1080}
+            loading={index === 0 ? "eager" : "lazy"}
+          />
+          
+          <div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
         </div>
-    ))}
+      ))}
+    </div>
   </div>
 </section>
 
 <script>
-  const track = document.getElementById('slider-track');
-  const realSlideCount = 6;
-  let currentIndex = 0;
-  let isTransitioning = false;
+  // 👇 NEW: Import Embla and the Autoplay plugin
+  import EmblaCarousel from 'embla-carousel';
+  import Autoplay from 'embla-carousel-autoplay';
 
-  function nextSlide() {
-    if (!track || isTransitioning) return;
-    isTransitioning = true;
-    currentIndex++;
+  const emblaNode = document.getElementById('hero-slider');
 
-    // 1. Enable smooth sliding
-    track.style.transition = 'transform 1000ms ease-in-out';
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-    // 2. Check if we hit the "Clone" (The fake first slide at the end)
-    if (currentIndex === realSlideCount) {
-      
-      // Wait for the animation to finish (1000ms), then instantly reset
-      setTimeout(() => {
-        // Disable animation briefly
-        track.style.transition = 'none';
-        
-        // Jump back to the REAL first slide (Index 0)
-        currentIndex = 0;
-        track.style.transform = `translateX(0%)`;
-        
-        // Allow clicking again
-        isTransitioning = false;
-      }, 1000); // This matches the CSS transition time
-
-    } else {
-      // If it's a normal slide, just unlock immediately after move
-      setTimeout(() => {
-        isTransitioning = false;
-      }, 1000);
-    }
+  if (emblaNode) {
+    // Initialize Embla
+    const emblaApi = EmblaCarousel(emblaNode, { 
+      loop: true,        // Infinite loop
+      duration: 30,      // Speed of the "snap" animation
+    }, [
+      Autoplay({ 
+        delay: 5000, 
+        stopOnInteraction: false // Keep sliding even after user swipes
+      })
+    ]);
   }
-
-  // Auto Slide every 5 seconds
-  setInterval(nextSlide, 5000);
-
 </script>

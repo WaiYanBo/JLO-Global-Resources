@@ -1,39 +1,36 @@
 ---
 // src/components/CompanyIntro.astro
-import sectionBg from '../assets/sectionbg.webp'; 
-import TrustedBy from '../components/TrustedBy.astro';
-import ProductShowcase from '../components/ProductShowcase.astro';
-import ServicesGrid from '../components/ServicesGrid.astro';
+import sectionBg from '../assets/sectionbg.webp';
+
+// Import the sub-sections
+import TrustedBy from './TrustedBy.astro';
+import ProductShowcase from './ProductShowcase.astro';
+import ServicesGrid from './ServicesGrid.astro';
 ---
 
 <section class="relative w-full py-12 md:py-20 flex flex-col items-center justify-center overflow-hidden">
     
     <img 
       src={sectionBg.src} 
-      alt="Background" 
-      class="absolute inset-0 w-full h-full -z-10"
+      alt="Background Gradient" 
+      class="absolute inset-0 w-full h-full object-cover -z-10"
     />
 
-    <div class="relative z-10 container mx-auto px-4 text-center mb-12">
-        
-        <h2 class="text-gradient text-4xl md:text-6xl font-extrabold tracking-tight mb-4 inline-block">
-          JLO Global Resources
+    <div class="relative z-10 container mx-auto px-4 text-center mb-8">
+        <h2 class="text-slate-900 text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+            JLO Global Resources
         </h2>
-
-        <p class="text-[#0d55a9] text-xl md:text-3xl font-medium uppercase tracking-widest drop-shadow-sm">
+        <p class="text-slate-600 text-xl md:text-3xl font-medium uppercase tracking-widest">
             "CEO of Leverage"
         </p>
-
     </div>
     
     <div class="relative z-10 w-full">
-        
-        <ProductShowcase />
-
-        <ServicesGrid />
-        
         <TrustedBy />
-
     </div>
-    
+
 </section>
+
+<ProductShowcase />
+
+<ServicesGrid />

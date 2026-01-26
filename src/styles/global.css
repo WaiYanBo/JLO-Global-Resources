@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
-/* 👇 STEP 3: THE BRAND GRADIENTS
-  Matches your Logo: Sapphire Green (#00664e) -> Vivid Azure (#0d55a9)
-*/
+/* 👇 NEW: Configure Tailwind 4 to use Inter as the default font */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ... existing styles ... */
+html {
+  scroll-behavior: smooth;
+}
+/* ... rest of your CSS ... */
 
 /* 1. The Main Button Gradient */
 .btn-gradient {
@@ -14,18 +21,37 @@
   overflow: hidden;
 }
 
-/* 2. Hover Effect: Brightens + Slight Lift + Blue Shadow */
+/* 2. Hover Effect: Brightens + Slight Lift + Consistent Brand Shadow */
 .btn-gradient:hover {
   filter: brightness(110%);
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px -5px rgba(13, 85, 169, 0.4); /* Blue-ish shadow */
+  box-shadow: 0 10px 20px -5px rgba(13, 85, 169, 0.4); 
 }
 
-/* 3. Text Gradient (Use for "Success Story" or Key Headings) */
+/* 3. Text Gradient */
 .text-gradient {
   background: linear-gradient(90deg, #00664e 0%, #0d55a9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  color: transparent; /* Fallback */
+  color: transparent; 
+}
+
+/* 4. Unified Brand Shadow */
+.shadow-brand {
+  box-shadow: 0 10px 40px -10px rgba(13, 85, 169, 0.5);
+}
+
+/* 5. Gradient Noise Texture */
+.bg-noise {
+  position: relative;
+}
+.bg-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
