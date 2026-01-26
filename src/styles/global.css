@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+/* 👇 STEP 3: THE BRAND GRADIENTS
+  Matches your Logo: Sapphire Green (#00664e) -> Vivid Azure (#0d55a9)
+*/
+
+/* 1. The Main Button Gradient */
+.btn-gradient {
+  background: linear-gradient(90deg, #00664e 0%, #0d55a9 100%);
+  color: white;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* 2. Hover Effect: Brightens + Slight Lift + Blue Shadow */
+.btn-gradient:hover {
+  filter: brightness(110%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(13, 85, 169, 0.4); /* Blue-ish shadow */
+}
+
+/* 3. Text Gradient (Use for "Success Story" or Key Headings) */
+.text-gradient {
+  background: linear-gradient(90deg, #00664e 0%, #0d55a9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Fallback */
+}

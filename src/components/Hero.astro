@@ -5,9 +5,9 @@ import slide2 from '../assets/slphoto2.webp';
 import slide3 from '../assets/slphoto3.webp';
 import slide4 from '../assets/slphoto4.webp';
 import slide5 from '../assets/slphoto5.webp';
-import slide6 from '../assets/slphoto6.webp'; // Assuming you have 6 now
+import slide6 from '../assets/slphoto6.webp';
 
-// CRITICAL STEP: We add slide1 again at the end to create the "Infinite Loop" illusion
+// We add slide1 again at the end to create the "Infinite Loop" illusion
 const slides = [slide1, slide2, slide3, slide4, slide5, slide6, slide1];
 ---
 
@@ -25,33 +25,19 @@ const slides = [slide1, slide2, slide3, slide4, slide5, slide6, slide1];
           class="w-full h-full object-cover"
           loading={index === 0 ? "eager" : "lazy"} 
         />
-        <div class="absolute inset-0 bg-black/40"></div>
-      </div>
+        </div>
     ))}
   </div>
-
-  <div class="absolute inset-0 z-10 flex items-end justify-center text-center pointer-events-none pb-10 md:pb-16">
-    
-    <div class="container mx-auto px-4 pointer-events-auto">
-        
-
-
-    </div>
-  </div>
-
 </section>
 
 <script>
   const track = document.getElementById('slider-track');
-  
-  // We have 6 real slides, but the array has 7 items (6 + 1 clone)
-  const realSlideCount = 6; 
+  const realSlideCount = 6;
   let currentIndex = 0;
   let isTransitioning = false;
 
   function nextSlide() {
     if (!track || isTransitioning) return;
-
     isTransitioning = true;
     currentIndex++;
 
@@ -83,7 +69,7 @@ const slides = [slide1, slide2, slide3, slide4, slide5, slide6, slide1];
     }
   }
 
-  // Auto Slide every 4 seconds
+  // Auto Slide every 5 seconds
   setInterval(nextSlide, 5000);
 
 </script>
