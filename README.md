@@ -1,18 +1,18 @@
 ```markdown
-# JLO Global Resources - Official Website
+JLO Global Resources - Official Website
 
 This is the official web platform for **JLO Global Resources**, a full-suite marketing agency based in Petaling Jaya, Selangor. The site is built using **Astro** for high-performance static generation and **Tailwind CSS** for modern, responsive styling.
 
-## 🚀 Project Overview
+🚀 Project Overview
 
 JLO Global Resources provides a range of corporate services including brand development, digital marketing, signage design, and customer engagement.
 
-### Key Features
+Key Features
 - **Dynamic Hero Slider**: Uses Embla Carousel for high-performance, touch-friendly image sliding on the homepage.
 - **Optimized SEO**: Integrated SEO component for Open Graph tags, Twitter cards, and JSON-LD schema.
 - **Responsive Organizational Chart**: Clear visualization of the company structure and team roles.
 
-## 📂 Project Structure
+📂 Project Structure
 
 ```text
 /
@@ -60,4 +60,3 @@ To update the thumbnail that appears when sharing the link:
 
 ```
 
-```

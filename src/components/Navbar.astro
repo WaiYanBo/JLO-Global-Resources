@@ -1,11 +1,19 @@
 ---
 // src/components/Navbar.astro
-import { Image } from 'astro:assets'; // 👇 NEW import
+import { Image } from 'astro:assets';
 import logo from '../assets/logo.webp';
 
-// ... (keep your existing navLinks array and isActive logic) ...
+const currentPath = Astro.url.pathname;
+
+const isActive = (path: string) => {
+  if (path === '/') return currentPath === '/';
+  const cleanPath = currentPath.replace(/\/$/, '');
+  const cleanHref = path.split('#')[0].replace(/\/$/, '');
+  return cleanPath === cleanHref || (cleanHref !== '' && cleanPath.startsWith(cleanHref));
+};
+
+// 👇 UPDATED: Links now point to the new /services page
 const navLinks = [
-  // ... same as before
   { name: "Company", href: "/company" },
   { 
     name: "Products", 
@@ -17,29 +25,23 @@ const navLinks = [
         { name: "Lagenda Acar Buah", href: "/products#acar" }
     ]
   },
-  // ... rest of links
   { 
     name: "Services", 
-    href: "/#services", 
+    href: "/services", // 👈 Point to the new page
     hasDropdown: true,
     subItems: [
-        { name: "Web Development", href: "/#services" },
-        { name: "SEO Optimization", href: "/#services" },
-        { name: "Consulting", href: "/#services" }
+        // 👇 UPDATED: The 6 new services linked to their sections
+        { name: "Utilities", href: "/services#utilities" },
+        { name: "O&M Services", href: "/services#om" },
+        { name: "Cement Manufacturing", href: "/services#cement" },
+        { name: "Construction", href: "/services#construction" },
+        { name: "Property Development", href: "/services#property" },
+        { name: "Hotels & Resorts", href: "/services#hotels" }
     ]
   },
   { name: "Success Story", href: "/success-story" },
   { name: "Contact Us", href: "/contact" },
 ];
-
-const currentPath = Astro.url.pathname;
-
-const isActive = (path: string) => {
-  if (path === '/') return currentPath === '/';
-  const cleanPath = currentPath.replace(/\/$/, '');
-  const cleanHref = path.split('#')[0].replace(/\/$/, '');
-  return cleanPath === cleanHref || (cleanHref !== '' && cleanPath.startsWith(cleanHref));
-};
 
 const activeClass = "text-white border-b-2 border-[#00664e]";
 const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transparent hover:border-[#00664e]/50";
@@ -60,9 +62,8 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
       />
     </a>
 
+    {/* Desktop Menu */}
     <ul class="hidden md:flex space-x-6 lg:space-x-8 items-center">
-
-
       {navLinks.map((link) => (
         <li class="relative group h-full flex items-center">
           <a 
@@ -72,10 +73,6 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
             {link.name}
           </a>
 
-          {/* 👇 IMPROVEMENT: Dropdown Toggle Button
-            Separated the arrow into a button. This allows "Click to toggle" on touch devices 
-            without breaking the main link navigation.
-          */}
           {link.hasDropdown && (
             <button 
                 class="dropdown-toggle p-1 text-gray-300 hover:text-white focus:outline-none"
@@ -109,6 +106,7 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
     </button>
   </nav>
 
+  {/* Mobile Menu */}
   <div 
     id="mobile-menu" 
     class="md:hidden fixed inset-x-0 top-[72px] h-[calc(100vh-72px)] bg-[#00221a]/98 backdrop-blur-md border-t border-[#00664e]/30 overflow-y-auto transition-all duration-300 ease-in-out opacity-0 invisible -translate-y-4"
@@ -116,6 +114,7 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
     <div class="flex flex-col p-6 space-y-6">
       <a href="/company" class={`text-lg ${isActive('/company') ? 'text-white font-bold pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Company</a>
       
+      {/* Products Dropdown (Mobile) */}
       <div class="space-y-3">
         <span class={`text-lg font-bold ${isActive('/products') ? 'text-white' : 'text-gray-300'}`}>Products</span>
         <div class="pl-4 border-l-2 border-[#00664e]/50 flex flex-col space-y-3 mt-2">
@@ -125,7 +124,19 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
         </div>
       </div>
 
-      <a href="/#services" class="text-gray-300 hover:text-white text-lg">Services</a>
+      {/* Services Dropdown (Mobile) - UPDATED */}
+      <div class="space-y-3">
+        <a href="/services" class={`text-lg font-bold block ${isActive('/services') ? 'text-white pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Services</a>
+        <div class="pl-4 border-l-2 border-[#00664e]/50 flex flex-col space-y-3 mt-2">
+            <a href="/services#utilities" class="text-gray-400 hover:text-white py-1">Utilities</a>
+            <a href="/services#om" class="text-gray-400 hover:text-white py-1">O&M Services</a>
+            <a href="/services#cement" class="text-gray-400 hover:text-white py-1">Cement Manufacturing</a>
+            <a href="/services#construction" class="text-gray-400 hover:text-white py-1">Construction</a>
+            <a href="/services#property" class="text-gray-400 hover:text-white py-1">Property Development</a>
+            <a href="/services#hotels" class="text-gray-400 hover:text-white py-1">Hotels & Resorts</a>
+        </div>
+      </div>
+
       <a href="/success-story" class={`text-lg ${isActive('/success-story') ? 'text-white font-bold pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Success Story</a>
       <a href="/contact" class={`text-lg ${isActive('/contact') ? 'text-white font-bold pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Contact Us</a>
     </div>
@@ -140,12 +151,9 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
 
   const solidClasses = ['bg-[#00221a]/90', 'backdrop-blur-md', 'border-[#00664e]/30', 'shadow-brand'];
 
-  // 1. Scroll Effect
   function handleScroll() {
     if (!navbar) return;
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Check if mobile menu is open to decide background
     const isMobileMenuOpen = mobileMenu && !mobileMenu.classList.contains('invisible');
 
     if (scrollTop < 10 && !isMobileMenuOpen) {
@@ -157,40 +165,28 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
 
   window.addEventListener('scroll', handleScroll);
 
-  // 2. Mobile Menu Toggle (Animation)
   if (mobileMenuBtn && mobileMenu) {
     mobileMenuBtn.addEventListener('click', () => {
-        // Toggle animation classes
         const isClosed = mobileMenu.classList.contains('invisible');
         
         if (isClosed) {
-            // OPEN
             mobileMenu.classList.remove('invisible', 'opacity-0', '-translate-y-4');
             mobileMenu.classList.add('visible', 'opacity-100', 'translate-y-0');
             navbar?.classList.add(...solidClasses);
         } else {
-            // CLOSE
             mobileMenu.classList.remove('visible', 'opacity-100', 'translate-y-0');
             mobileMenu.classList.add('invisible', 'opacity-0', '-translate-y-4');
-            handleScroll(); // Revert navbar bg if at top
+            handleScroll(); 
         }
     });
   }
 
-  // 3. Dropdown Click Toggle (for Touch/Tablet)
   dropdownToggles.forEach(toggle => {
     toggle.addEventListener('click', (e) => {
-        // Stop the click from bubbling up (optional)
         e.stopPropagation();
-        
-        // Find the parent LI
         const parentLi = toggle.closest('li');
         if (parentLi) {
-            // Toggle the 'active' class on the LI
-            // The CSS 'group-[.active]:opacity-100' handles the visibility
             parentLi.classList.toggle('active');
-
-            // Close other open dropdowns
             document.querySelectorAll('li.group.active').forEach(item => {
                 if (item !== parentLi) {
                     item.classList.remove('active');
@@ -200,7 +196,6 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
     });
   });
 
-  // Close dropdowns when clicking outside
   document.addEventListener('click', (e) => {
     if (!(e.target as Element).closest('li.group')) {
         document.querySelectorAll('li.group.active').forEach(item => {
@@ -208,5 +203,4 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
         });
     }
   });
-
 </script>

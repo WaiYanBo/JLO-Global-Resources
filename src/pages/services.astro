@@ -1,0 +1,123 @@
+---
+// src/pages/services.astro
+import Layout from '../layouts/Layout.astro';
+
+// Placeholder data matches the reduced grid
+const servicesList = [
+  { 
+    id: "utilities",
+    title: "Utilities", 
+    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800",
+    description: "Providing essential utility services with efficiency and reliability. We ensure sustainable solutions that power businesses and communities."
+  },
+  { 
+    id: "om",
+    title: "Operation and Maintenance (O&M)", 
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800",
+    description: "Comprehensive O&M services designed to maximize asset performance, reduce downtime, and extend the lifespan of your critical infrastructure."
+  },
+  { 
+    id: "cement",
+    title: "Cement Manufacturing", 
+    image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&q=80&w=800",
+    description: "Delivering high-quality cement products for large-scale construction projects. Our manufacturing process prioritizes strength, durability, and environmental compliance."
+  },
+  { 
+    id: "construction",
+    title: "Construction Contracting", 
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800",
+    description: "Expert contracting services for commercial and industrial projects. From ground-breaking to handover, we manage every phase with precision."
+  },
+  { 
+    id: "property",
+    title: "Property Development", 
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
+    description: "Developing premium properties that blend modern design with functionality. We create spaces that inspire and elevate the standard of living."
+  },
+  { 
+    id: "hotels",
+    title: "Hotels and Resorts", 
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800",
+    description: "Managing and developing world-class hospitality venues. We focus on guest experience, operational excellence, and luxury service standards."
+  },
+];
+---
+
+<Layout 
+  title="Our Services | JLO Global Resources" 
+  description="Explore the full range of services offered by JLO Global Resources, from construction to property development."
+>
+  
+  {/* Page Header */}
+  <section class="bg-[#00664e] text-white py-20 md:py-28 relative overflow-hidden">
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
+        Our Services
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto leading-relaxed">
+        Comprehensive solutions tailored to your industry needs.
+      </p>
+    </div>
+  </section>
+
+  {/* Services Loop */}
+  <div class="bg-slate-50 py-12">
+    {servicesList.map((service, index) => (
+      <section id={service.id} class="py-12 md:py-20 scroll-mt-24 border-b border-gray-200 last:border-0">
+        <div class="container mx-auto px-4">
+            <div class={`flex flex-col md:flex-row gap-12 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+                
+                {/* Image Side */}
+                <div class="w-full md:w-1/2">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+                        <div class="absolute inset-0 bg-[#00664e]/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <img 
+                            src={service.image} 
+                            alt={service.title} 
+                            class="w-full h-[300px] md:h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                        />
+                    </div>
+                </div>
+
+                {/* Text Side */}
+                <div class="w-full md:w-1/2 space-y-6">
+                    <span class="text-[#0d55a9] font-bold tracking-widest uppercase text-sm">
+                        Service 0{index + 1}
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
+                        {service.title}
+                    </h2>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        {service.description}
+                    </p>
+                    <p class="text-gray-400 italic text-sm">
+                        *Draft content: Specific details for {service.title} will be updated soon.
+                    </p>
+                    <a href="/contact" class="inline-flex items-center gap-2 text-[#00664e] font-bold hover:underline mt-4">
+                        Inquire about this service
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  {/* CTA Section */}
+  <section class="bg-[#00221a] text-white py-20 text-center">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Need a custom solution?</h2>
+        <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+           Contact our team today to discuss how we can assist with your specific project requirements.
+        </p>
+        <a href="/contact" class="btn-gradient inline-block px-10 py-4 rounded-full font-bold text-lg tracking-wide shadow-lg hover:shadow-xl">
+            Get a Quote
+        </a>
+    </div>
+  </section>
+
+</Layout>

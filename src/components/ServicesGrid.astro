@@ -5,57 +5,51 @@ const services = [
   { 
     title: "Utilities", 
     image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800",
-    href: "#"
+    href: "/services#utilities"
   },
   { 
     title: "Operation and Maintenance (O&M)", 
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800",
-    href: "#"
+    href: "/services#om"
   },
   { 
     title: "Cement Manufacturing", 
     image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&q=80&w=800",
-    href: "#"
+    href: "/services#cement"
   },
   { 
     title: "Construction Contracting", 
     image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800",
-    href: "#"
+    href: "/services#construction"
   },
   { 
     title: "Property Development", 
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
-    href: "#"
+    href: "/services#property"
   },
   { 
     title: "Hotels and Resorts", 
     image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800",
-    href: "#"
-  },
-  { 
-    title: "Technology", 
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
-    href: "#"
-  },
-  { 
-    title: "REIT", 
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    href: "#"
-  },
-  { 
-    title: "Education", 
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800",
-    href: "#"
-  },
+    href: "/services#hotels"
+  }
 ];
 ---
 
-<section id="services" class="py-20 bg-white">
+<section id="services-grid" class="py-20 bg-white">
   <div class="container mx-auto px-4">
     
+    <div class="text-center mb-12">
+        <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-[#0d55a9] text-xs font-bold tracking-widest uppercase mb-4">
+            What We Do
+        </span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          Our Core Services
+        </h2>
+    </div>
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {services.map((service) => (
-        <a href={service.href} class="group relative h-64 overflow-hidden shadow-lg cursor-pointer">
+        <a href={service.href} class="group relative h-64 rounded-xl overflow-hidden shadow-lg cursor-pointer block">
           
           <img 
             src={service.image} 
@@ -65,10 +59,14 @@ const services = [
 
           <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300"></div>
 
-          <div class="absolute top-6 left-6 right-6">
-            <h3 class="text-white text-2xl font-bold tracking-tight leading-tight drop-shadow-md">
+          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+            <h3 class="text-white text-xl font-bold tracking-tight leading-tight drop-shadow-md group-hover:text-[#FFD700] transition-colors">
               {service.title}
             </h3>
+            <span class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1 mt-2">
+                View Details 
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </span>
           </div>
 
         </a>

@@ -1,7 +1,7 @@
 ---
 // src/pages/products.astro
 import Layout from '../layouts/Layout.astro';
-import CheckIcon from '../components/CheckIcon.astro'; // 👈 IMPORT THE NEW ICON
+import CheckIcon from '../components/CheckIcon.astro'; 
 
 // Importing .webp images
 import rendangImg from '../assets/rendang-cutout.webp'; 
@@ -13,7 +13,8 @@ import acarImg from '../assets/acar-cutout.webp';
   title="JLO Global Resources | Full-Suite Digital Agency & Signboard Maker" 
   description="JLO Global Resources is a leading marketing agency in Malaysia offering corporate branding solutions, signboard making, recruitment services, and Email Rakyat consulting."
 >  
-<section class="bg-[#00664e] text-white py-20 md:py-28 relative overflow-hidden">
+  
+  <section class="bg-[#00664e] text-white py-20 md:py-28 relative overflow-hidden">
     <div class="container mx-auto px-4 relative z-10 text-center">
       <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
         Our Products
@@ -30,7 +31,7 @@ import acarImg from '../assets/acar-cutout.webp';
 
     <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
-        <div class="order-2 md:order-1 flex justify-center">
+        <div class="order-1 md:order-1 flex justify-center">
             <div class="relative w-full max-w-md">
                 <div class="absolute inset-0 bg-orange-500/20 blur-3xl rounded-full"></div>
                 <img 
@@ -41,7 +42,7 @@ import acarImg from '../assets/acar-cutout.webp';
             </div>
         </div>
 
-        <div class="order-1 md:order-2 text-white space-y-8">
+        <div class="order-2 md:order-2 text-white space-y-8">
             <div>
                 <span class="inline-block px-4 py-1 rounded-full bg-orange-600/20 text-orange-500 font-bold tracking-wider text-sm border border-orange-600/30 mb-4">
                     BEST SELLER
@@ -91,7 +92,7 @@ import acarImg from '../assets/acar-cutout.webp';
 
     <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
-        <div class="space-y-8">
+        <div class="order-2 md:order-1 space-y-8">
             <div>
                 <span class="inline-block px-4 py-1 rounded-full bg-yellow-400/20 text-yellow-700 font-bold tracking-wider text-sm border border-yellow-400/30 mb-4">
                     FRESH BAKED
@@ -132,7 +133,7 @@ import acarImg from '../assets/acar-cutout.webp';
             </div>
         </div>
 
-        <div class="flex justify-center">
+        <div class="order-1 md:order-2 flex justify-center">
             <div class="relative w-full max-w-md">
                 <div class="absolute inset-0 bg-yellow-300/30 blur-3xl rounded-full"></div>
                 <img 
@@ -151,7 +152,7 @@ import acarImg from '../assets/acar-cutout.webp';
     
     <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
-        <div class="order-2 md:order-1 flex justify-center">
+        <div class="order-1 md:order-1 flex justify-center">
             <div class="relative w-full max-w-md">
                 <div class="absolute inset-0 bg-yellow-500/10 blur-3xl rounded-full"></div>
                 <img 
@@ -162,7 +163,7 @@ import acarImg from '../assets/acar-cutout.webp';
             </div>
         </div>
 
-        <div class="order-1 md:order-2 space-y-8">
+        <div class="order-2 md:order-2 space-y-8">
             <div>
                 <span class="inline-block px-4 py-1 rounded-full bg-yellow-500/20 text-yellow-400 font-bold tracking-wider text-sm border border-yellow-500/30 mb-4">
                     TRADITIONAL RECIPE
