@@ -12,7 +12,6 @@ const isActive = (path: string) => {
   return cleanPath === cleanHref || (cleanHref !== '' && cleanPath.startsWith(cleanHref));
 };
 
-// 👇 UPDATED: Links now point to the new /services page
 const navLinks = [
   { name: "Company", href: "/company" },
   { 
@@ -27,16 +26,15 @@ const navLinks = [
   },
   { 
     name: "Services", 
-    href: "/services", // 👈 Point to the new page
+    href: "/services", 
     hasDropdown: true,
     subItems: [
-        // 👇 UPDATED: The 6 new services linked to their sections
-        { name: "Utilities", href: "/services#utilities" },
-        { name: "O&M Services", href: "/services#om" },
-        { name: "Cement Manufacturing", href: "/services#cement" },
-        { name: "Construction", href: "/services#construction" },
-        { name: "Property Development", href: "/services#property" },
-        { name: "Hotels & Resorts", href: "/services#hotels" }
+        { name: "Consultancy", href: "/services#consultancy" },
+        { name: "Signboard", href: "/services#signboard" },
+        { name: "Corporate Video/Photography", href: "/services#corporate-media" },
+        { name: "LG Subscribe", href: "/services#lg-subscribe" },
+        { name: "Catering", href: "/services#catering" },
+        { name: "Marketing Services", href: "/services#marketing" }
     ]
   },
   { name: "Success Story", href: "/success-story" },
@@ -45,11 +43,14 @@ const navLinks = [
 
 const activeClass = "text-white border-b-2 border-[#00664e]";
 const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transparent hover:border-[#00664e]/50";
+
+// 👇 UNIFIED BACKGROUND COLOR
+const themeBgColor = "bg-[#00221a]/95"; 
 ---
 
 <header 
   id="navbar" 
-  class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out border-b border-transparent"
+  class="fixed top-0 left-0 w-full z-50 transition-transform duration-300 ease-in-out border-b border-transparent"
 >
   <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
     
@@ -86,7 +87,8 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
 
           {link.hasDropdown && (
             <div class="absolute left-0 top-full pt-4 w-64 opacity-0 invisible -translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-[.active]:opacity-100 group-[.active]:visible group-[.active]:translate-y-0 transition-all duration-300 z-50">
-                <div class="bg-[#00221a]/95 backdrop-blur-md border border-[#00664e]/30 rounded-lg shadow-brand overflow-hidden">
+                {/* 👇 Dropdown now uses themeBgColor */}
+                <div class={`${themeBgColor} backdrop-blur-md border border-[#00664e]/30 rounded-lg shadow-brand overflow-hidden`}>
                     {link.subItems?.map((subItem) => (
                         <a href={subItem.href} class="block px-4 py-3 text-sm text-gray-300 hover:bg-[#00664e]/40 hover:text-white transition-colors">
                             {subItem.name}
@@ -109,12 +111,11 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
   {/* Mobile Menu */}
   <div 
     id="mobile-menu" 
-    class="md:hidden fixed inset-x-0 top-[72px] h-[calc(100vh-72px)] bg-[#00221a]/98 backdrop-blur-md border-t border-[#00664e]/30 overflow-y-auto transition-all duration-300 ease-in-out opacity-0 invisible -translate-y-4"
+    class={`md:hidden fixed inset-x-0 top-[72px] h-[calc(100vh-72px)] ${themeBgColor} backdrop-blur-md border-t border-[#00664e]/30 overflow-y-auto transition-all duration-300 ease-in-out opacity-0 invisible -translate-y-4`}
   >
     <div class="flex flex-col p-6 space-y-6">
       <a href="/company" class={`text-lg ${isActive('/company') ? 'text-white font-bold pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Company</a>
       
-      {/* Products Dropdown (Mobile) */}
       <div class="space-y-3">
         <span class={`text-lg font-bold ${isActive('/products') ? 'text-white' : 'text-gray-300'}`}>Products</span>
         <div class="pl-4 border-l-2 border-[#00664e]/50 flex flex-col space-y-3 mt-2">
@@ -124,7 +125,6 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
         </div>
       </div>
 
-      {/* Services Dropdown (Mobile) - UPDATED */}
       <div class="space-y-3">
         <a href="/services" class={`text-lg font-bold block ${isActive('/services') ? 'text-white pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Services</a>
         <div class="pl-4 border-l-2 border-[#00664e]/50 flex flex-col space-y-3 mt-2">
@@ -149,22 +149,58 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
   const mobileMenu = document.getElementById('mobile-menu');
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
-  const solidClasses = ['bg-[#00221a]/90', 'backdrop-blur-md', 'border-[#00664e]/30', 'shadow-brand'];
+  const solidClasses = ['bg-[#00221a]/95', 'backdrop-blur-md', 'border-[#00664e]/30', 'shadow-brand'];
 
-  function handleScroll() {
-    if (!navbar) return;
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const isMobileMenuOpen = mobileMenu && !mobileMenu.classList.contains('invisible');
+  let isHoveringTop = false;
 
-    if (scrollTop < 10 && !isMobileMenuOpen) {
-      navbar.classList.remove(...solidClasses);
-    } else {
-      navbar.classList.add(...solidClasses);
-    }
-  }
+  const isMobileMenuOpen = () => mobileMenu && !mobileMenu.classList.contains('invisible');
 
-  window.addEventListener('scroll', handleScroll);
+  const applyBackground = () => {
+      if (!navbar) return;
 
+      const atTop = window.scrollY < 10;
+
+      // If mobile menu is open, always show solid navbar
+      if (isMobileMenuOpen()) {
+          navbar.classList.add(...solidClasses);
+          return;
+      }
+
+      // At the very top: transparent by default, solid only when hovered
+      if (atTop) {
+          if (isHoveringTop) {
+              navbar.classList.add(...solidClasses);
+          } else {
+              navbar.classList.remove(...solidClasses);
+          }
+      } else {
+          // Scrolled: always solid
+          navbar.classList.add(...solidClasses);
+      }
+  };
+
+  // 1. MOUSE MOVE LISTENER
+  // When resting at the very top, navbar pops out (solid) only when mouse is on/near it.
+  window.addEventListener('mousemove', (e) => {
+      if (!navbar) return;
+      
+      if (e.clientY < 60 || navbar.contains(e.target as Node)) {
+          isHoveringTop = true;
+      } else {
+          isHoveringTop = false;
+      }
+
+      applyBackground();
+  });
+
+  // 2. SCROLL LISTENER
+  window.addEventListener('scroll', () => {
+      if (!navbar) return;
+
+      applyBackground();
+  });
+
+  // 3. MOBILE MENU TOGGLE
   if (mobileMenuBtn && mobileMenu) {
     mobileMenuBtn.addEventListener('click', () => {
         const isClosed = mobileMenu.classList.contains('invisible');
@@ -176,11 +212,13 @@ const inactiveClass = "text-gray-300 hover:text-white border-b-2 border-transpar
         } else {
             mobileMenu.classList.remove('visible', 'opacity-100', 'translate-y-0');
             mobileMenu.classList.add('invisible', 'opacity-0', '-translate-y-4');
-            handleScroll(); 
+            // Recalculate transparency / camo state after closing
+            applyBackground();
         }
     });
   }
 
+  // 4. DROPDOWN CLICK LOGIC
   dropdownToggles.forEach(toggle => {
     toggle.addEventListener('click', (e) => {
         e.stopPropagation();

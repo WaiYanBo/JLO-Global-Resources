@@ -2,50 +2,58 @@
 // src/pages/services.astro
 import Layout from '../layouts/Layout.astro';
 
-// Placeholder data matches the reduced grid
+// 👇 IMPORT YOUR NEW IMAGES HERE
+// Make sure these files exist in src/assets/ or the build will fail!
+import consultancyImg from '../assets/consultancy.webp';
+import signboardImg from '../assets/signboard.webp';
+import cateringImg from '../assets/catering.webp';
+import lgImg from '../assets/lg-subscribe.webp';
+import mediaImg from '../assets/corporate-media.webp';
+import marketingImg from '../assets/marketing.webp';
+
 const servicesList = [
   { 
-    id: "utilities",
-    title: "Utilities", 
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800",
-    description: "Providing essential utility services with efficiency and reliability. We ensure sustainable solutions that power businesses and communities."
+    id: "consultancy",
+    title: "Consultancy", 
+    image: consultancyImg,
+    description: "Expert guidance to navigate complex business challenges. We provide strategic insights and operational solutions to help your organization thrive."
   },
   { 
-    id: "om",
-    title: "Operation and Maintenance (O&M)", 
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800",
-    description: "Comprehensive O&M services designed to maximize asset performance, reduce downtime, and extend the lifespan of your critical infrastructure."
+    id: "signboard",
+    title: "Signboard", 
+    image: signboardImg,
+    description: "High-impact, custom signage solutions. From design to installation, we create visual markers that elevate your brand visibility and recognition."
   },
   { 
-    id: "cement",
-    title: "Cement Manufacturing", 
-    image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&q=80&w=800",
-    description: "Delivering high-quality cement products for large-scale construction projects. Our manufacturing process prioritizes strength, durability, and environmental compliance."
+    id: "corporate-media",
+    title: "Corporate Video/Photography", 
+    image: mediaImg,
+    description: "Professional visual storytelling. We capture your brand's essence through high-quality photography and corporate video production."
   },
   { 
-    id: "construction",
-    title: "Construction Contracting", 
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800",
-    description: "Expert contracting services for commercial and industrial projects. From ground-breaking to handover, we manage every phase with precision."
+    id: "lg-subscribe",
+    title: "LG Subscribe", 
+    image: lgImg,
+    description: "Flexible subscription plans for premium LG electronics. Access the latest technology for your business or home with affordable monthly plans."
   },
   { 
-    id: "property",
-    title: "Property Development", 
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
-    description: "Developing premium properties that blend modern design with functionality. We create spaces that inspire and elevate the standard of living."
-  },
+    id: "catering",
+    title: "Catering", 
+    image: cateringImg,
+    description: "Exceptional culinary experiences for corporate events and private gatherings. Our catering service combines taste, presentation, and reliability."
+  },  
   { 
-    id: "hotels",
-    title: "Hotels and Resorts", 
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800",
-    description: "Managing and developing world-class hospitality venues. We focus on guest experience, operational excellence, and luxury service standards."
+    id: "marketing",
+    title: "Marketing Services", 
+    image: marketingImg,
+    description: "Data-driven marketing strategies tailored to your goals. We help you reach your target audience and drive measurable growth."
   },
 ];
 ---
 
 <Layout 
   title="Our Services | JLO Global Resources" 
-  description="Explore the full range of services offered by JLO Global Resources, from construction to property development."
+  description="Explore our services: Consultancy, Signboard, Catering, LG Subscribe, Corporate Media, and Marketing."
 >
   
   {/* Page Header */}
@@ -55,7 +63,7 @@ const servicesList = [
         Our Services
       </h1>
       <p class="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto leading-relaxed">
-        Comprehensive solutions tailored to your industry needs.
+        Comprehensive solutions tailored to your business needs.
       </p>
     </div>
   </section>
@@ -72,7 +80,7 @@ const servicesList = [
                     <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
                         <div class="absolute inset-0 bg-[#00664e]/10 group-hover:bg-transparent transition-colors duration-500"></div>
                         <img 
-                            src={service.image} 
+                            src={service.image.src} 
                             alt={service.title} 
                             class="w-full h-[300px] md:h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                         />
@@ -89,9 +97,6 @@ const servicesList = [
                     </h2>
                     <p class="text-slate-600 text-lg leading-relaxed">
                         {service.description}
-                    </p>
-                    <p class="text-gray-400 italic text-sm">
-                        *Draft content: Specific details for {service.title} will be updated soon.
                     </p>
                     <a href="/contact" class="inline-flex items-center gap-2 text-[#00664e] font-bold hover:underline mt-4">
                         Inquire about this service
@@ -110,7 +115,7 @@ const servicesList = [
   {/* CTA Section */}
   <section class="bg-[#00221a] text-white py-20 text-center">
     <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">Need a custom solution?</h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to get started?</h2>
         <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
            Contact our team today to discuss how we can assist with your specific project requirements.
         </p>

@@ -1,36 +1,44 @@
 ---
 // src/components/ServicesGrid.astro
 
+// 👇 IMPORT SAME IMAGES AS PAGE
+import consultancyImg from '../assets/consultancy.webp';
+import signboardImg from '../assets/signboard.webp';
+import cateringImg from '../assets/catering.webp';
+import lgImg from '../assets/lg-subscribe.webp';
+import mediaImg from '../assets/corporate-media.webp';
+import marketingImg from '../assets/marketing.webp';
+
 const services = [
   { 
-    title: "Utilities", 
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800",
-    href: "/services#utilities"
+    title: "Consultancy", 
+    image: consultancyImg,
+    href: "/services#consultancy"
   },
   { 
-    title: "Operation and Maintenance (O&M)", 
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800",
-    href: "/services#om"
+    title: "Signboard", 
+    image: signboardImg,
+    href: "/services#signboard"
   },
   { 
-    title: "Cement Manufacturing", 
-    image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&q=80&w=800",
-    href: "/services#cement"
+    title: "Corporate Video/Photo", 
+    image: mediaImg,
+    href: "/services#corporate-media"
   },
   { 
-    title: "Construction Contracting", 
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800",
-    href: "/services#construction"
+    title: "LG Subscribe", 
+    image: lgImg,
+    href: "/services#lg-subscribe"
   },
   { 
-    title: "Property Development", 
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
-    href: "/services#property"
+    title: "Catering", 
+    image: cateringImg,
+    href: "/services#catering"
   },
   { 
-    title: "Hotels and Resorts", 
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800",
-    href: "/services#hotels"
+    title: "Marketing Services", 
+    image: marketingImg,
+    href: "/services#marketing"
   }
 ];
 ---
@@ -52,7 +60,7 @@ const services = [
         <a href={service.href} class="group relative h-64 rounded-xl overflow-hidden shadow-lg cursor-pointer block">
           
           <img 
-            src={service.image} 
+            src={service.image.src} 
             alt={service.title} 
             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           />
