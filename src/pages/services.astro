@@ -16,37 +16,43 @@ const servicesList = [
     id: "consultancy",
     title: "Consultancy", 
     image: consultancyImg,
-    description: "Expert guidance to navigate complex business challenges. We provide strategic insights and operational solutions to help your organization thrive."
+    description: "Expert guidance to navigate complex business challenges. We provide strategic insights and operational solutions to help your organization thrive.",
+    href: "/consultancy"
   },
   { 
     id: "signboard",
     title: "Signboard", 
     image: signboardImg,
-    description: "High-impact, custom signage solutions. From design to installation, we create visual markers that elevate your brand visibility and recognition."
+    description: "High-impact, custom signage solutions. From design to installation, we create visual markers that elevate your brand visibility and recognition.",
+    href: "/signboard"
   },
   { 
     id: "corporate-media",
     title: "Corporate Video/Photography", 
     image: mediaImg,
-    description: "Professional visual storytelling. We capture your brand's essence through high-quality photography and corporate video production."
+    description: "Professional visual storytelling. We capture your brand's essence through high-quality photography and corporate video production.",
+    href: "/corporate-media"
   },
   { 
     id: "lg-subscribe",
     title: "LG Subscribe", 
     image: lgImg,
-    description: "Flexible subscription plans for premium LG electronics. Access the latest technology for your business or home with affordable monthly plans."
+    description: "Flexible subscription plans for premium LG electronics. Access the latest technology for your business or home with affordable monthly plans.",
+    href: "/lg-subscribe"
   },
   { 
     id: "catering",
     title: "Catering", 
     image: cateringImg,
-    description: "Exceptional culinary experiences for corporate events and private gatherings. Our catering service combines taste, presentation, and reliability."
+    description: "Exceptional culinary experiences for corporate events and private gatherings. Our catering service combines taste, presentation, and reliability.",
+    href: "/catering"
   },  
   { 
     id: "marketing",
     title: "Marketing Services", 
     image: marketingImg,
-    description: "Data-driven marketing strategies tailored to your goals. We help you reach your target audience and drive measurable growth."
+    description: "Data-driven marketing strategies tailored to your goals. We help you reach your target audience and drive measurable growth.",
+    href: "/marketing"
   },
 ];
 ---
@@ -98,8 +104,8 @@ const servicesList = [
                     <p class="text-slate-600 text-lg leading-relaxed">
                         {service.description}
                     </p>
-                    <a href="/contact" class="inline-flex items-center gap-2 text-[#00664e] font-bold hover:underline mt-4">
-                        Inquire about this service
+                    <a href={service.href} class="inline-flex items-center gap-2 text-[#00664e] font-bold hover:underline mt-4">
+                        Learn more about this service
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>

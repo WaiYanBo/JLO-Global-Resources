@@ -1,0 +1,306 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import consultancyImg from '../assets/consultancy.webp';
+import signboardImg from '../assets/signboard.webp';
+import cateringImg from '../assets/catering.webp';
+import lgImg from '../assets/lg-subscribe.webp';
+import mediaImg from '../assets/corporate-media.webp';
+import marketingImg from '../assets/marketing.webp';
+
+const highlights = [
+  { label: 'Timeline', value: '8 weeks end-to-end' },
+  { label: 'Scope', value: 'Strategy + content + campaign + on-ground visibility + event support' },
+  { label: 'Location', value: 'Petaling Jaya, Selangor' },
+];
+
+const metrics = [
+  { value: '+42%', label: 'Increase in enquiries' },
+  { value: '+28%', label: 'Foot traffic uplift' },
+  { value: '3×', label: 'More content output per week' },
+  { value: '4.8/5', label: 'Event satisfaction score' },
+];
+
+const servicesUsed = [
+  { name: 'Consultancy', href: '/services#consultancy' },
+  { name: 'Marketing Services', href: '/services#marketing' },
+  { name: 'Corporate Video/Photography', href: '/services#corporate-media' },
+  { name: 'Signboard', href: '/services#signboard' },
+  { name: 'Catering', href: '/services#catering' },
+  { name: 'LG Subscribe', href: '/services#lg-subscribe' },
+];
+
+const solutionSteps = [
+  {
+    title: 'Consultancy: clarify positioning + offer',
+    image: consultancyImg,
+    points: [
+      'Audit current brand and customer journey',
+      'Define target personas + messaging pillars',
+      'Set measurable goals and a simple rollout plan',
+    ],
+    href: '/consultancy',
+  },
+  {
+    title: 'Marketing Services: drive demand with a campaign',
+    image: marketingImg,
+    points: [
+      'Build a launch campaign with clear CTAs',
+      'Create a content calendar for consistent posting',
+      'Optimize ads and reporting for measurable growth',
+    ],
+    href: '/marketing',
+  },
+  {
+    title: 'Corporate Video/Photography: tell the brand story',
+    image: mediaImg,
+    points: [
+      'Short-form reels + product/service highlights',
+      'Professional photos for web and social',
+      'Editing templates for fast repurposing',
+    ],
+    href: '/corporate-media',
+  },
+  {
+    title: 'Signboard: increase visibility and walk-ins',
+    image: signboardImg,
+    points: [
+      'Design with strong readability and brand cues',
+      'Production planning + installation coordination',
+      'Consistency across storefront and indoor signage',
+    ],
+    href: '/signboard',
+  },
+  {
+    title: 'Catering: launch event that converts',
+    image: cateringImg,
+    points: [
+      'Menu planning for corporate guests',
+      'On-time delivery + presentation setup',
+      'Smooth on-ground coordination with the client team',
+    ],
+    href: '/catering',
+  },
+  {
+    title: 'LG Subscribe: equip the office setup (optional)',
+    image: lgImg,
+    points: [
+      'Flexible electronics subscription options',
+      'Budget-friendly monthly plan for the team',
+      'Simple onboarding and support',
+    ],
+    href: '/lg-subscribe',
+  },
+];
+---
+
+<Layout 
+  title="Testimonials | JLO Global Resources" 
+  description="Client testimonials and outcomes showing how JLO Global Resources combines consultancy, marketing, corporate media, signboard, catering and LG Subscribe to drive measurable growth."
+>  
+  {/* Hero */} 
+  <section class="bg-[#00664e] text-white py-20 md:py-28 relative overflow-hidden">
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <span class="inline-block py-1 px-3 rounded-full bg-white/10 text-white text-xs font-bold tracking-widest uppercase mb-4">
+        Testimonials
+      </span>
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
+        Testimonials: Real feedback and measurable outcomes
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-100 max-w-4xl mx-auto leading-relaxed">
+        A representative example of how we combine <strong>Consultancy</strong>, <strong>Marketing Services</strong>, <strong>Corporate Video/Photography</strong>, <strong>Signboard</strong>, and <strong>Catering</strong> to help a local business launch stronger and convert faster.
+      </p>
+    </div>
+  </section>
+
+  {/* Highlights */}
+  <section class="bg-white py-10">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {highlights.map((item) => (
+          <div class="rounded-2xl border border-slate-100 bg-slate-50 p-6">
+            <p class="text-xs font-bold tracking-widest uppercase text-slate-500">{item.label}</p>
+            <p class="mt-2 text-lg font-extrabold text-slate-900">{item.value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Client profile + services used */}
+  <section class="py-14 md:py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div class="rounded-2xl border border-slate-100 bg-slate-50 p-8 md:p-10">
+          <p class="text-xs font-bold tracking-widest uppercase text-slate-500">Client profile</p>
+          <h2 class="mt-3 text-3xl md:text-4xl font-extrabold text-slate-900">A local service business preparing for growth.</h2>
+          <p class="mt-4 text-slate-600 leading-relaxed">
+            They had strong delivery and repeat customers, but the brand looked inconsistent online and on-ground.
+            The goal was to raise trust quickly, improve visibility, and turn marketing activity into predictable enquiries.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-100 bg-white p-8 md:p-10">
+          <p class="text-xs font-bold tracking-widest uppercase text-slate-500">Services used</p>
+          <h3 class="mt-3 text-2xl md:text-3xl font-extrabold text-slate-900">A coordinated mix for faster results</h3>
+          <div class="mt-5 flex flex-wrap gap-3">
+            {servicesUsed.map((s) => (
+              <a
+                href={s.href}
+                class="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-bold text-slate-700 hover:bg-white hover:border-slate-300 transition-colors"
+              >
+                {s.name}
+              </a>
+            ))}
+          </div>
+          <a href="/services" class="mt-6 inline-flex items-center gap-2 text-[#00664e] font-bold hover:underline">
+            Explore all services
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* The challenge + objective */}
+  <section class="py-16 md:py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div class="bg-white rounded-2xl border border-slate-100 p-8 md:p-10 shadow-sm">
+          <h2 class="text-[#0d55a9] font-bold uppercase tracking-wider text-sm">The Challenge</h2>
+          <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mt-3 mb-4">Great service, not enough visibility.</h3>
+          <p class="text-slate-600 leading-relaxed">
+            The client had a strong offering but inconsistent branding, limited content, and weak storefront visibility—resulting in low walk-ins and unpredictable enquiries.
+            They also needed a launch event that felt premium and well-managed.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-100 p-8 md:p-10 shadow-sm">
+          <h2 class="text-[#00664e] font-bold uppercase tracking-wider text-sm">The Goal</h2>
+          <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mt-3 mb-4">Build trust fast and increase conversions.</h3>
+          <ul class="space-y-3 text-slate-600 leading-relaxed">
+            <li class="flex gap-3">
+              <span class="mt-1 h-2 w-2 rounded-full bg-[#00664e]"></span>
+              Create a clear brand message and consistent visuals
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1 h-2 w-2 rounded-full bg-[#00664e]"></span>
+              Produce high-quality content for web + social
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1 h-2 w-2 rounded-full bg-[#00664e]"></span>
+              Improve on-ground visibility and run a launch activation
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* What we did (mapped to services) */}
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="inline-block py-1 px-3 rounded-full bg-emerald-50 text-[#00664e] text-xs font-bold tracking-widest uppercase mb-4">
+          Our Approach
+        </span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+          A full-suite rollout using the services we provide
+        </h2>
+        <p class="text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed">
+          We structured the work in clear stages—strategy first, then content and campaign execution, then on-ground branding and event support.
+        </p>
+      </div>
+
+      <div class="space-y-10">
+        {solutionSteps.map((step, idx) => (
+          <div class={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ${idx % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
+            <div class="rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+              <img
+                src={step.image.src}
+                alt={step.title}
+                class="w-full h-[280px] md:h-[360px] object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="space-y-5">
+              <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900">{step.title}</h3>
+              <ul class="space-y-3 text-slate-600 leading-relaxed">
+                {step.points.map((p) => (
+                  <li class="flex gap-3">
+                    <span class="mt-1.5 h-2 w-2 rounded-full bg-[#0d55a9]"></span>
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={step.href} class="inline-flex items-center gap-2 text-[#00664e] font-bold hover:underline">
+                View this service
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Results */}
+  <section class="py-16 md:py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-[#0d55a9] text-xs font-bold tracking-widest uppercase mb-4">
+          Results
+        </span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+          Measurable improvements in awareness and enquiries
+        </h2>
+        <p class="text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed">
+          These numbers are a representative example of what a coordinated rollout can achieve (your actual results will vary based on industry and budget).
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {metrics.map((m) => (
+          <div class="bg-white rounded-2xl border border-slate-100 p-8 text-center shadow-sm">
+            <div class="text-4xl font-extrabold text-slate-900">{m.value}</div>
+            <div class="mt-2 text-slate-600 font-medium">{m.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Testimonial */}
+  <section class="py-16 md:py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto rounded-2xl border border-slate-100 bg-slate-50 p-8 md:p-12">
+        <p class="text-slate-600 font-bold tracking-widest uppercase text-xs">Client feedback</p>
+        <p class="mt-4 text-xl md:text-2xl text-slate-900 leading-relaxed font-semibold">
+          “The team handled everything end-to-end—from strategy to content to on-ground branding. We finally look consistent, and enquiries are coming in more steadily.”
+        </p>
+        <p class="mt-6 text-slate-600">
+          — A local business owner, Selangor
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#00221a] text-white py-20 text-center">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Want results like this for your business?</h2>
+        <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+            Tell us your goals and timeline—we’ll recommend the right mix of services and a clear plan to execute.
+        </p>
+        
+        <a href="/contact" class="btn-gradient inline-block px-10 py-4 rounded-full font-bold text-lg tracking-wide shadow-lg hover:shadow-xl">
+            Contact Us Today
+        </a>
+    </div>
+  </section>
+
+</Layout>
+

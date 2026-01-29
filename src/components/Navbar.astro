@@ -37,7 +37,7 @@ const navLinks = [
         { name: "Marketing Services", href: "/services#marketing" }
     ]
   },
-  { name: "Success Story", href: "/success-story" },
+  { name: "Testimonials", href: "/testimonials" },
   { name: "Contact Us", href: "/contact" },
 ];
 
@@ -86,7 +86,7 @@ const themeBgColor = "bg-[#00221a]/95";
           )}
 
           {link.hasDropdown && (
-            <div class="absolute left-0 top-full pt-4 w-64 opacity-0 invisible -translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-[.active]:opacity-100 group-[.active]:visible group-[.active]:translate-y-0 transition-all duration-300 z-50">
+            <div class="absolute left-0 top-[calc(100%+1.5rem)] w-64 opacity-0 invisible -translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-[.active]:opacity-100 group-[.active]:visible group-[.active]:translate-y-0 transition-all duration-300 z-40">
                 {/* 👇 Dropdown now uses themeBgColor */}
                 <div class={`${themeBgColor} backdrop-blur-md border border-[#00664e]/30 rounded-lg shadow-brand overflow-hidden`}>
                     {link.subItems?.map((subItem) => (
@@ -128,16 +128,16 @@ const themeBgColor = "bg-[#00221a]/95";
       <div class="space-y-3">
         <a href="/services" class={`text-lg font-bold block ${isActive('/services') ? 'text-white pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Services</a>
         <div class="pl-4 border-l-2 border-[#00664e]/50 flex flex-col space-y-3 mt-2">
-            <a href="/services#utilities" class="text-gray-400 hover:text-white py-1">Utilities</a>
-            <a href="/services#om" class="text-gray-400 hover:text-white py-1">O&M Services</a>
-            <a href="/services#cement" class="text-gray-400 hover:text-white py-1">Cement Manufacturing</a>
-            <a href="/services#construction" class="text-gray-400 hover:text-white py-1">Construction</a>
-            <a href="/services#property" class="text-gray-400 hover:text-white py-1">Property Development</a>
-            <a href="/services#hotels" class="text-gray-400 hover:text-white py-1">Hotels & Resorts</a>
+            <a href="/services#consultancy" class="text-gray-400 hover:text-white py-1">Consultancy</a>
+            <a href="/services#signboard" class="text-gray-400 hover:text-white py-1">Signboard</a>
+            <a href="/services#corporate-media" class="text-gray-400 hover:text-white py-1">Corporate Video/Photography</a>
+            <a href="/services#lg-subscribe" class="text-gray-400 hover:text-white py-1">LG Subscribe</a>
+            <a href="/services#catering" class="text-gray-400 hover:text-white py-1">Catering</a>
+            <a href="/services#marketing" class="text-gray-400 hover:text-white py-1">Marketing Services</a>
         </div>
       </div>
 
-      <a href="/success-story" class={`text-lg ${isActive('/success-story') ? 'text-white font-bold pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Success Story</a>
+      <a href="/testimonials" class={`text-lg ${isActive('/testimonials') ? 'text-white font-bold pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Testimonials</a>
       <a href="/contact" class={`text-lg ${isActive('/contact') ? 'text-white font-bold pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Contact Us</a>
     </div>
   </div>
