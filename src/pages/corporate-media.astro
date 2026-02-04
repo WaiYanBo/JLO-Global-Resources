@@ -2,21 +2,29 @@
 // src/pages/corporate-media.astro
 import Layout from '../layouts/Layout.astro';
 import mediaImg from '../assets/corporate-media.webp';
+import mediaImg1 from '../assets/corporate-media1.webp';
+import media1 from '../assets/media1.webp';
+import media2 from '../assets/media2.webp';
+import media3 from '../assets/media3.webp';
+import media4 from '../assets/media4.webp';
+import media5 from '../assets/media5.webp';
+import media6 from '../assets/media6.webp';
+import media7 from '../assets/media7.webp';
 ---
 
 <Layout 
   title="Corporate Video & Photography | JLO Global Resources" 
-  description="Professional visual storytelling. We capture your brand's essence through high-quality photography and corporate video production."
+  description="Professional visual storytelling for national and corporate levels. We capture your brand's essence through high-quality photography and cinematic video production."
 >
   
   {/* Hero Section */}
   <section class="bg-[#00664e] text-white page-hero relative overflow-hidden">
     <div class="container mx-auto px-4 relative z-10 text-center">
       <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
-        Corporate Video & Photography
+        National & Corporate Media Services
       </h1>
       <p class="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto leading-relaxed">
-        Professional visual storytelling that captures your brand's essence.
+        Delivering world-class visual storytelling through professional videography and photography.
       </p>
     </div>
   </section>
@@ -30,12 +38,12 @@ import mediaImg from '../assets/corporate-media.webp';
         <div class="order-1">
           <div class="relative rounded-2xl overflow-hidden shadow-2xl">
             <img 
-              src={mediaImg.src} 
-              alt="Corporate Video & Photography" 
+              src={mediaImg1.src} 
+              alt="Professional Production Setup" 
               loading="eager"
               width="600"
               height="500"
-              class="w-full h-[400px] md:h-[500px] object-cover"
+              class="w-full aspect-[8/9] md:aspect-[3/2] object-cover"
             />
           </div>
         </div>
@@ -46,13 +54,13 @@ import mediaImg from '../assets/corporate-media.webp';
             Visual Excellence
           </span>
           <h2 class="text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
-            Professional Visual Content Creation
+            Premium Media Production for National Brands
           </h2>
           <p class="text-slate-600 text-lg leading-relaxed">
-            We capture your brand's essence through high-quality photography and corporate video production. Our team specializes in creating compelling visual content that tells your story and engages your audience.
+            We specialize in high-impact visual content creation, ranging from large-scale corporate conferences to intricate studio productions. Our team utilizes industry-leading equipment to ensure every frame reflects the prestige of your brand.
           </p>
           <p class="text-slate-600 text-lg leading-relaxed">
-            From corporate events and product launches to promotional videos and brand photography, we deliver professional results that elevate your brand presence.
+            From capturing the gravity of national-level events to producing cinematic corporate profiles, we provide a comprehensive suite of media services tailored for high-stakes environments.
           </p>
         </div>
 
@@ -68,7 +76,7 @@ import mediaImg from '../assets/corporate-media.webp';
           Our Visual Portfolio
         </h2>
         <p class="text-slate-600 text-lg max-w-2xl mx-auto">
-          Showcasing our photography and video production work
+          A glimpse into our professional production standards and event coverage
         </p>
       </div>
 
@@ -76,95 +84,95 @@ import mediaImg from '../assets/corporate-media.webp';
         <div id="media-carousel" class="overflow-hidden rounded-2xl">
           <div class="flex transition-transform duration-700 ease-in-out" style="transform: translateX(0%)">
             <div class="min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-3">
-              <div class="relative group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div class="relative group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 aspect-[8/9]">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                 <img 
-                  src={mediaImg.src} 
-                  alt="Corporate Media Photo 1" 
+                  src={media5.src} 
+                  alt="National Level Event Coverage" 
                   loading="lazy"
                   width="400"
-                  height="400"
-                  class="w-full h-[400px] md:h-[450px] object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  height="450"
+                  class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
                 <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-20">
-                  <p class="text-white font-semibold text-lg">Event Photography</p>
+                  <p class="text-white font-semibold text-lg">National Event Coverage</p>
                 </div>
               </div>
             </div>
             <div class="min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-3">
-              <div class="relative group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div class="relative group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 aspect-[8/9]">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                 <img 
-                  src={mediaImg.src} 
-                  alt="Corporate Media Photo 2" 
+                  src={media1.src} 
+                  alt="Cinematic Video Production" 
                   loading="lazy"
                   width="400"
-                  height="400"
-                  class="w-full h-[400px] md:h-[450px] object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  height="450"
+                  class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
                 <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-20">
-                  <p class="text-white font-semibold text-lg">Video Production</p>
+                  <p class="text-white font-semibold text-lg">Cinematic Production</p>
                 </div>
               </div>
             </div>
             <div class="min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-3">
-              <div class="relative group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div class="relative group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 aspect-[8/9]">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                 <img 
-                  src={mediaImg.src} 
-                  alt="Corporate Media Photo 3" 
+                  src={media2.src} 
+                  alt="Broadcast Quality Setups" 
                   loading="lazy"
                   width="400"
-                  height="400"
-                  class="w-full h-[400px] md:h-[450px] object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  height="450"
+                  class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
                 <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-20">
-                  <p class="text-white font-semibold text-lg">Brand Storytelling</p>
+                  <p class="text-white font-semibold text-lg">Broadcast Excellence</p>
                 </div>
               </div>
             </div>
             <div class="min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-3">
-              <div class="relative group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div class="relative group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 aspect-[8/9]">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                 <img 
-                  src={mediaImg.src} 
-                  alt="Corporate Media Photo 4" 
+                  src={media3.src} 
+                  alt="Corporate Documentary" 
                   loading="lazy"
                   width="400"
-                  height="400"
-                  class="w-full h-[400px] md:h-[450px] object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  height="450"
+                  class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
                 <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-20">
-                  <p class="text-white font-semibold text-lg">Product Shoots</p>
+                  <p class="text-white font-semibold text-lg">Corporate Storytelling</p>
                 </div>
               </div>
             </div>
             <div class="min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-3">
-              <div class="relative group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div class="relative group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 aspect-[8/9]">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                 <img 
-                  src={mediaImg.src} 
-                  alt="Corporate Media Photo 5" 
+                  src={media4.src} 
+                  alt="High-End Studio Photography" 
                   loading="lazy"
                   width="400"
-                  height="400"
-                  class="w-full h-[400px] md:h-[450px] object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  height="450"
+                  class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
                 <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-20">
-                  <p class="text-white font-semibold text-lg">Corporate Headshots</p>
+                  <p class="text-white font-semibold text-lg">Studio Photography</p>
                 </div>
               </div>
             </div>
             <div class="min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-3">
-              <div class="relative group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div class="relative group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 aspect-[8/9]">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                 <img 
-                  src={mediaImg.src} 
-                  alt="Corporate Media Photo 6" 
+                  src={media5.src} 
+                  alt="Professional Post-Production" 
                   loading="lazy"
                   width="400"
-                  height="400"
-                  class="w-full h-[400px] md:h-[450px] object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  height="450"
+                  class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
                 <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-20">
                   <p class="text-white font-semibold text-lg">Post-Production</p>
@@ -198,6 +206,7 @@ import mediaImg from '../assets/corporate-media.webp';
         <button class="carousel-dot w-2 h-2 rounded-full bg-[#00664e] transition-all duration-300" data-slide="0"></button>
         <button class="carousel-dot w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="1"></button>
         <button class="carousel-dot w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="2"></button>
+        <button class="carousel-dot w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="3"></button>
       </div>
     </div>
   </section>
@@ -207,28 +216,28 @@ import mediaImg from '../assets/corporate-media.webp';
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="relative group rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
           <div class="absolute inset-0 bg-gradient-to-br from-[#00664e]/80 to-[#0d55a9]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-center justify-center">
-            <p class="text-white font-bold text-xl transform scale-0 group-hover:scale-100 transition-transform duration-500">Featured Project</p>
+            <p class="text-white font-bold text-xl transform scale-0 group-hover:scale-100 transition-transform duration-500">Government & State Functions</p>
           </div>
           <img 
-            src={mediaImg.src} 
-            alt="Corporate Media Photo 7" 
+            src={media6.src} 
+            alt="National Event Portfolio" 
             loading="lazy"
             width="600"
             height="500"
-            class="w-full h-[500px] object-cover transform group-hover:scale-110 transition-transform duration-700"
+            class="w-full aspect-[8/9] object-cover transform group-hover:scale-110 transition-transform duration-700"
           />
         </div>
         <div class="relative group rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
           <div class="absolute inset-0 bg-gradient-to-br from-[#00664e]/80 to-[#0d55a9]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-center justify-center">
-            <p class="text-white font-bold text-xl transform scale-0 group-hover:scale-100 transition-transform duration-500">Testimonials</p>
+            <p class="text-white font-bold text-xl transform scale-0 group-hover:scale-100 transition-transform duration-500">Trusted by Global Leaders</p>
           </div>
           <img 
-            src={mediaImg.src} 
-            alt="Corporate Media Photo 8" 
+            src={media7.src} 
+            alt="Corporate Media Excellence" 
             loading="lazy"
             width="600"
             height="500"
-            class="w-full h-[500px] object-cover transform group-hover:scale-110 transition-transform duration-700"
+            class="w-full aspect-[8/9] object-cover transform group-hover:scale-110 transition-transform duration-700"
           />
         </div>
       </div>
@@ -243,27 +252,27 @@ import mediaImg from '../assets/corporate-media.webp';
           Our Media Services
         </h2>
         <p class="text-slate-600 text-lg max-w-2xl mx-auto">
-          Comprehensive visual content solutions for your business
+          Comprehensive visual content solutions for national and corporate institutions
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="bg-white p-8 rounded-xl shadow-lg">
-          <h3 class="text-xl font-bold text-slate-900 mb-3">Corporate Photography</h3>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Event Photography</h3>
           <p class="text-slate-600">
-            Professional photography for events, headshots, products, and corporate documentation.
+            Professional coverage for high-level summits, corporate launches, and state events with rapid delivery.
           </p>
         </div>
         <div class="bg-white p-8 rounded-xl shadow-lg">
-          <h3 class="text-xl font-bold text-slate-900 mb-3">Video Production</h3>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Videography & Film</h3>
           <p class="text-slate-600">
-            High-quality video content including promotional videos, testimonials, and event coverage.
+            Cinematic video production including multi-cam live streams, promotional films, and documentary-style features.
           </p>
         </div>
         <div class="bg-white p-8 rounded-xl shadow-lg">
-          <h3 class="text-xl font-bold text-slate-900 mb-3">Post-Production</h3>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Creative Direction</h3>
           <p class="text-slate-600">
-            Expert editing, color grading, and visual effects to polish your content to perfection.
+            End-to-end production management from concept development and storyboarding to final post-production.
           </p>
         </div>
       </div>
@@ -273,12 +282,12 @@ import mediaImg from '../assets/corporate-media.webp';
   {/* CTA Section */}
   <section class="bg-[#00221a] text-white py-20 text-center">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Tell Your Story?</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Capture Your Vision?</h2>
       <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
-        Let's discuss your visual content needs and create something extraordinary together.
+        Partner with us for world-class media production that sets your brand apart on a global scale.
       </p>
       <a href="/contact" class="btn-gradient inline-block px-10 py-4 rounded-full font-bold text-lg tracking-wide shadow-lg hover:shadow-xl">
-        Start Your Project
+        Book a Consultation
       </a>
     </div>
   </section>
@@ -289,13 +298,35 @@ import mediaImg from '../assets/corporate-media.webp';
       const prevBtn = document.getElementById('media-prev');
       const nextBtn = document.getElementById('media-next');
       const dots = document.querySelectorAll('#media-carousel ~ div ~ div .carousel-dot');
+      const carouselInner = carousel?.querySelector('.flex') as HTMLElement;
       let currentSlide = 0;
-      const totalSlides = 3;
-
+      const totalImages = 6;
+      
+      // @ts-nocheck
+      function getSlidesPerView() {
+        const width = window.innerWidth;
+        if (width >= 1024) return 3; // lg: 3 slides
+        if (width >= 768) return 2;  // md: 2 slides
+        return 1; // mobile: 1 slide
+      }
+      
+      // @ts-nocheck
+      function getMaxSlides() {
+        const slidesPerView = getSlidesPerView();
+        return Math.max(1, totalImages - slidesPerView + 1);
+      }
+      
+      // @ts-nocheck
       function updateCarousel() {
-        const translateX = -(currentSlide * (100 / totalSlides));
-        carousel.querySelector('.flex').style.transform = `translateX(${translateX}%)`;
+        const slidesPerView = getSlidesPerView();
+        const slideWidth = 100 / slidesPerView;
+        const translateX = -(currentSlide * slideWidth);
         
+        if (carouselInner) {
+          carouselInner.style.transform = `translateX(${translateX}%)`;
+        }
+        
+        // @ts-nocheck 
         dots.forEach((dot, index) => {
           if (index === currentSlide) {
             dot.classList.remove('bg-gray-300');
@@ -312,12 +343,14 @@ import mediaImg from '../assets/corporate-media.webp';
       }
 
       nextBtn?.addEventListener('click', () => {
-        currentSlide = (currentSlide + 1) % totalSlides;
+        const maxSlides = getMaxSlides();
+        currentSlide = (currentSlide + 1) % maxSlides;
         updateCarousel();
       });
 
       prevBtn?.addEventListener('click', () => {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        const maxSlides = getMaxSlides();
+        currentSlide = (currentSlide - 1 + maxSlides) % maxSlides;
         updateCarousel();
       });
 
@@ -328,8 +361,22 @@ import mediaImg from '../assets/corporate-media.webp';
         });
       });
 
+      // Handle window resize
+      let resizeTimeout: ReturnType<typeof setTimeout>;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          const maxSlides = getMaxSlides();
+          if (currentSlide >= maxSlides) {
+            currentSlide = maxSlides - 1;
+          }
+          updateCarousel();
+        }, 250);
+      });
+
       setInterval(() => {
-        currentSlide = (currentSlide + 1) % totalSlides;
+        const maxSlides = getMaxSlides();
+        currentSlide = (currentSlide + 1) % maxSlides;
         updateCarousel();
       }, 5000);
     })();
