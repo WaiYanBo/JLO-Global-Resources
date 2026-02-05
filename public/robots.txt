@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.jloglobal.com.my/sitemap-index.xml
+Sitemap: https://jloglobalresources.com/sitemap-index.xml

@@ -23,7 +23,7 @@ const schemaData = {
   "description": "Your partner for 360° marketing, signboards, and digital solutions like 'Email Rakyat'. We also offer premium F&B catering, including our famous Daging Minang Rendang and Vanilla Butter Cake.",
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+60-12-345-6789", // 🔴 TODO: Replace with real phone number
+    "telephone": "+601137823199",
     "contactType": "customer service",
     "areaServed": "MY",
     "availableLanguage": ["en", "ms"]
@@ -33,7 +33,6 @@ const schemaData = {
     "addressLocality": "Kuala Lumpur",
     "addressCountry": "MY"
   },
-  // 🔴 TODO: Add your real social media links here
   "sameAs": [
     "https://www.facebook.com/people/JLO-Global-Resources/61583049912033/",
     "https://www.tiktok.com/@jloglobalresources",
@@ -48,7 +47,10 @@ const schemaData = {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#00664e" />
+<meta name="msapplication-TileColor" content="#00664e" />
 
 <title>{title}</title>
 <meta name="title" content={title} />
@@ -67,5 +69,11 @@ const schemaData = {
 <meta property="twitter:image" content={image} />
 
 <link rel="canonical" href={url} />
+
+{/* Preconnect to external domains for performance */}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+<link rel="dns-prefetch" href="https://www.google.com" />
+<link rel="dns-prefetch" href="https://wa.me" />
 
 <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />

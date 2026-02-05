@@ -7,34 +7,31 @@ import bdmLGImage from '../assets/bdmLG.webp';
 import bdmCEImage from '../assets/bdmCE.webp';
 import bdmFNBImage from '../assets/bdmFNB.webp';
 
-// You can customize the page title here
-const pageTitle = "Company | JLO Global Resources";
-
 // Team Data
 const teamMembers = [
   {
     name: "Muhammad Jazli",
-    role: "Managing Director",
+    role: "Chief Executive Officer",
     image: mdImage, // 👇 Use the imported variable, NOT a string
     description: "Oversees all aspects of the company’s operations, driving strategic direction, managing key partnerships, and ensuring the business meets its objectives."
   },
   {
-    name: "Syed Amirul Asyraf",
-    role: "BDM (LG Electronics Unit)",
-    image: bdmLGImage, // 👇 Use the imported variable
-    description: "Leads marketing and sales initiatives for the LG business unit; responsible for generating online and offline sales, conducting cold calls, nurturing leads, and converting prospects into clients."
+    name: "Muhammad Hafiz",
+    role: "Chief Financial Officer",
+    image: bdmFNBImage, // 👇 Use the imported variable
+    description: "Acts as advisor to the Managing Director, coordinating the marketing team and HR-related functions, and overseeing all F&B business marketing activities from strategy through execution."
   },
   {
     name: "Muhammad Azizul Harith",
-    role: "BDM (Signboard & Civil Work)",
+    role: "Chief Operating Officer",
     image: bdmCEImage, // 👇 Use the imported variable
     description: "Drives sales and promotional activities for signboard and civil work projects, manages lead generation and client outreach, and supports the LG business unit as required."
   },
   {
-    name: "Muhammad Hafiz",
-    role: "BDM (F&B Business Unit)",
-    image: bdmFNBImage, // 👇 Use the imported variable
-    description: "Acts as advisor to the Managing Director, coordinating the marketing team and HR-related functions, and overseeing all F&B business marketing activities from strategy through execution."
+    name: "Syed Amirul Asyraf",
+    role: "Manager",
+    image: bdmLGImage, // 👇 Use the imported variable
+    description: "Leads marketing and sales initiatives for the LG business unit; responsible for generating online and offline sales, conducting cold calls, nurturing leads, and converting prospects into clients."
   }
 ];
 ---
@@ -43,7 +40,7 @@ const teamMembers = [
   title="JLO Global Resources | Full-Suite Digital Agency & Signboard Maker" 
   description="JLO Global Resources is a leading marketing agency in Malaysia offering corporate branding solutions, signboard making, recruitment services, and Email Rakyat consulting."
 >  
-  <section class="bg-[#00664e] text-white py-20 md:py-28 relative overflow-hidden">
+  <section class="bg-[#00664e] text-white page-hero relative overflow-hidden">
     
     <div class="container mx-auto px-4 relative z-10 text-center">
       <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
@@ -175,30 +172,30 @@ const teamMembers = [
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
             {teamMembers.map((member) => (
-                <div class="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col h-full">
-                    
-                    <div class="h-64 w-full bg-gradient-to-br from-blue-50 to-emerald-50 flex items-end justify-center relative overflow-hidden group-hover:from-blue-100 group-hover:to-emerald-100 transition-colors duration-500">
-                        <img 
-                            src={member.image.src} 
-                            alt={member.name} 
-                            class="h-56 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                        />
-                    </div>
+              <div class="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col h-full">
+                  
+                  <div class="h-64 w-full bg-gradient-to-br from-blue-50 to-emerald-50 flex items-end justify-center relative overflow-hidden group-hover:from-blue-100 group-hover:to-emerald-100 transition-colors duration-500">
+                      <img 
+                          src={member.image.src} 
+                          alt={member.name} 
+                          class="h-56 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                      />
+                  </div>
 
-                    <div class="p-6 text-left flex-grow flex flex-col">
-                        <h3 class="text-xl font-bold text-slate-900 mb-1">
-                            {member.name}
-                        </h3>
-                        <p class="text-[#0d55a9] font-semibold text-sm uppercase tracking-wide mb-4">
-                            {member.role}
-                        </p>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-grow">
-                            {member.description}
-                        </p>
-                    </div>
-                    
-                    <div class="h-1 w-full bg-gradient-to-r from-[#00664e] to-[#0d55a9]"></div>
-                </div>
+                  <div class="p-6 text-left flex-grow flex flex-col">
+                      <h3 class="text-xl font-bold text-slate-900 mb-1">
+                          {member.name}
+                      </h3>
+                      <p class="text-[#0d55a9] font-semibold text-sm uppercase tracking-wide mb-4">
+                          {member.role}
+                      </p>
+                      <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-grow">
+                          {member.description}
+                      </p>
+                  </div>
+                  
+                  <div class="h-1 w-full bg-gradient-to-r from-[#00664e] to-[#0d55a9]"></div>
+              </div>
             ))}
         </div>
     </div>

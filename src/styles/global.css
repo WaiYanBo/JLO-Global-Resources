@@ -5,6 +5,12 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Font display strategy for better performance */
+@font-face {
+  font-family: "Inter";
+  font-display: swap; /* Show fallback font immediately, swap when loaded */
+}
+
 /* ... existing styles ... */
 html {
   scroll-behavior: smooth;
