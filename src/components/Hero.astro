@@ -1,7 +1,9 @@
 ---
 // src/components/Hero.astro
-import { Image } from 'astro:assets'; // 👇 NEW: Astro's optimized Image component
+import { Image } from 'astro:assets';
 
+// 1. Force High Quality (to fix blurriness)
+// 2. Use standard imports
 import slide1 from '../assets/slphoto1.webp';
 import slide2 from '../assets/slphoto2.webp';
 import slide3 from '../assets/slphoto3.webp';
@@ -9,21 +11,21 @@ import slide4 from '../assets/slphoto4.webp';
 import slide5 from '../assets/slphoto5.webp';
 import slide6 from '../assets/slphoto6.webp';
 
-// Note: Embla handles looping automatically, so we don't need to manually clone slides!
 const slides = [slide1, slide2, slide3, slide4, slide5, slide6];
 ---
 
-<section class="relative w-full h-screen overflow-hidden group">
-  <div class="embla h-full w-full" id="hero-slider">
-    <div class="embla__container flex h-full w-full touch-pan-y">
+<section class="relative w-full h-auto md:h-screen overflow-hidden group">
+  <div class="embla w-full h-auto md:h-full" id="hero-slider">
+    <div class="embla__container flex w-full h-auto md:h-full touch-pan-y">
       {slides.map((slide, index) => (
-        <div class="embla__slide relative flex-[0_0_100%] min-w-0 h-full w-full">
+        <div class="embla__slide relative flex-[0_0_100%] min-w-0 w-full h-auto md:h-full">
           <Image 
             src={slide} 
             alt={`Slide ${index + 1}`} 
-            class="w-full h-full object-cover"
+            class="w-full h-auto md:h-full md:object-cover"
             width={1920}
             height={1080}
+            quality={100}
             loading={index === 0 ? "eager" : "lazy"}
           />
           
@@ -35,21 +37,19 @@ const slides = [slide1, slide2, slide3, slide4, slide5, slide6];
 </section>
 
 <script>
-  // 👇 NEW: Import Embla and the Autoplay plugin
   import EmblaCarousel from 'embla-carousel';
   import Autoplay from 'embla-carousel-autoplay';
 
   const emblaNode = document.getElementById('hero-slider');
 
   if (emblaNode) {
-    // Initialize Embla
     const emblaApi = EmblaCarousel(emblaNode, { 
-      loop: true,        // Infinite loop
-      duration: 30,      // Speed of the "snap" animation
+      loop: true, 
+      duration: 30,
     }, [
       Autoplay({ 
         delay: 5000, 
-        stopOnInteraction: false // Keep sliding even after user swipes
+        stopOnInteraction: false 
       })
     ]);
   }

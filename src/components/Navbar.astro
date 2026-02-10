@@ -29,12 +29,12 @@ const navLinks = [
     href: "/services", 
     hasDropdown: true,
     subItems: [
-        { name: "Consultancy", href: "/services#consultancy" },
-        { name: "Signboard", href: "/services#signboard" },
-        { name: "Corporate Video/Photography", href: "/services#corporate-media" },
-        { name: "LG Subscribe", href: "/services#lg-subscribe" },
-        { name: "Catering", href: "/services#catering" },
-        { name: "Marketing Services", href: "/services#marketing" }
+        { name: "Consultancy", href: "/consultancy" },             // Changed from /services#consultancy
+        { name: "Signboard", href: "/signboard" },                 // Changed from /services#signboard
+        { name: "Corporate Video/Photography", href: "/corporate-media" }, // Changed from /services#corporate-media
+        { name: "LG Subscribe", href: "/lg-subscribe" },           // Changed from /services#lg-subscribe
+        { name: "Catering", href: "/catering" },                   // Changed from /services#catering
+        { name: "Marketing Services", href: "/marketing" }
     ]
   },
   { name: "Testimonials", href: "/testimonials" },
@@ -128,12 +128,12 @@ const themeBgColor = "bg-[#00221a]/95";
       <div class="space-y-3">
         <a href="/services" class={`text-lg font-bold block ${isActive('/services') ? 'text-white pl-2 border-l-4 border-[#00664e]' : 'text-gray-300'}`}>Services</a>
         <div class="pl-4 border-l-2 border-[#00664e]/50 flex flex-col space-y-3 mt-2">
-            <a href="/services#consultancy" class="text-gray-400 hover:text-white py-1">Consultancy</a>
-            <a href="/services#signboard" class="text-gray-400 hover:text-white py-1">Signboard</a>
-            <a href="/services#corporate-media" class="text-gray-400 hover:text-white py-1">Corporate Video/Photography</a>
-            <a href="/services#lg-subscribe" class="text-gray-400 hover:text-white py-1">LG Subscribe</a>
-            <a href="/services#catering" class="text-gray-400 hover:text-white py-1">Catering</a>
-            <a href="/services#marketing" class="text-gray-400 hover:text-white py-1">Marketing Services</a>
+            <a href="/consultancy" class="text-gray-400 hover:text-white py-1">Consultancy</a>
+            <a href="/signboard" class="text-gray-400 hover:text-white py-1">Signboard</a>
+            <a href="/corporate-media" class="text-gray-400 hover:text-white py-1">Corporate Video/Photography</a>
+            <a href="/lg-subscribe" class="text-gray-400 hover:text-white py-1">LG Subscribe</a>
+            <a href="/catering" class="text-gray-400 hover:text-white py-1">Catering</a>
+            <a href="/marketing" class="text-gray-400 hover:text-white py-1">Marketing Services</a>
         </div>
       </div>
 
